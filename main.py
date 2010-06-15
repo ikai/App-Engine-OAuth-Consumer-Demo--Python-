@@ -1,13 +1,16 @@
+import os
+
 from google.appengine.ext import webapp
 from google.appengine.ext.webapp.util import run_wsgi_app
 from google.appengine.api import oauth
+from google.appengine.ext.webapp import template
+
 
 class MainPage(webapp.RequestHandler):
    def get(self):
-      self.response.out.write("<html><head>")
-      self.response.out.write('<meta name="google-site-verification" content="y9JU-YRZyuWXD_fCq122gvABdYljIrbezu1SXX7ox1M" />')
-      self.response.out.write("</head><body>Hi</body>")
-      self.response.out.write("</html>")
+      path = os.path.join(os.path.dirname(__file__), 'templates/index.html')
+      self.response.out.write(template.render(path, {}))
+      
       
 application = webapp.WSGIApplication(
                                      [('/', MainPage)],
