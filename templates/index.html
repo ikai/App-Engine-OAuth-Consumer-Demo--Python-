@@ -6,5 +6,26 @@
 		Source code is here: <a href="http://github.com/ikai/App-Engine-OAuth-Consumer-Demo--Python-">
 			http://github.com/ikai/App-Engine-OAuth-Consumer-Demo--Python-</a>
 	</p>
+	
+	<div>
+		
+		<h2>Make OAuth calls</h2>
+		
+		{% if request_token %}
+		<p>
+			<strong>Current Request Token:</strong> {{ request_token }}
+		</p>
+		{% else %}
+		<p>
+			You don't have a request token. Get one by clicking the link below to follow the 
+			three-legged OAuth token request flow:
+		</p>
+		<p>
+			<form action="/get_token" method="POST">
+				<input type="submit" name="Get Token" />
+			</form>
+		</p>
+		{% endif %}
+	</div>
 </body>
 </html>
